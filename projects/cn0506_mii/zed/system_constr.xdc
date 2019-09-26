@@ -51,9 +51,10 @@ set_property -dict {PACKAGE_PIN E18  IOSTANDARD LVCMOS25} [get_ports led_bl_a_c2
 set_property -dict {PACKAGE_PIN J20  IOSTANDARD LVCMOS25} [get_ports led_br_c_c2m]                ; ## G18 FMC_LPC_LA16_P
 set_property -dict {PACKAGE_PIN K21  IOSTANDARD LVCMOS25} [get_ports led_br_a_c2m]                ; ## G19 FMC_LPC_LA16_N
 
-create_clock -name ref_clk_125    -period  8.0 [get_ports ref_clk_125_p]
 create_clock -name rx_clk_1       -period 40.0 [get_ports mii_rx_clk_a]
 create_clock -name rx_clk_2       -period 40.0 [get_ports mii_rx_clk_b]
+create_clock -name tx_clk_1       -period 40.0 [get_ports mii_tx_clk_a]
+create_clock -name tx_clk_2       -period 40.0 [get_ports mii_tx_clk_b]
 
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets mii_tx_clk_a*]
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets mii_tx_clk_b*]
