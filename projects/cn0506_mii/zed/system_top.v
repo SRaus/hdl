@@ -140,8 +140,8 @@ module system_top (
   wire    [ 1:0]  iic_mux_sda_o_s;
   wire            iic_mux_sda_t_s;
 
-  wire            mii_txd_extra_a;
-  wire            mii_txd_extra_b;
+  wire    [ 3:0]  mii_txd_extra_a;
+  wire    [ 3:0]  mii_txd_extra_b;
 
   assign reset_a = reset;
   assign reset_b = reset;
