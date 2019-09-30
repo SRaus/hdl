@@ -156,9 +156,6 @@ module system_top (
   wire              hps_emac_mdo_o_b;
   wire              hps_emac_mdo_o_e_b;
 
-  wire    [ 3:0]    mii_txd_extra_a;
-  wire    [ 3:0]    mii_txd_extra_b;
-
   wire    [ 1:0]    mac_speed_0;
   wire    [ 1:0]    mac_speed_1;
 
@@ -270,12 +267,12 @@ module system_top (
     .sys_rstn_reset_n (sys_resetn_s),
 
     .sys_hps_emac0_phy_mac_speed_o (mac_speed_0),
-    .sys_hps_emac0_phy_txd_o ({mii_txd_extra_a,mii_txd_a}),
+    .sys_hps_emac0_phy_txd_o (mii_txd_a),
     .sys_hps_emac0_phy_txen_o (mii_tx_en_a),
     .sys_hps_emac0_phy_txer_o (),
     .sys_hps_emac0_phy_rxdv_i (mii_rx_dv_a),
     .sys_hps_emac0_phy_rxer_i (mii_rx_er_a),
-    .sys_hps_emac0_phy_rxd_i ({4'h0,mii_rxd_a}),
+    .sys_hps_emac0_phy_rxd_i (mii_rxd_a),
     .sys_hps_emac0_phy_col_i (led_0_a),
     .sys_hps_emac0_phy_crs_i (mii_crs_a),
     .sys_hps_emac0_gmii_mdo_o (hps_emac_mdo_o_a),
@@ -286,12 +283,12 @@ module system_top (
     .sys_hps_emac0_tx_clk_in_clk (mii_tx_clk_a),
 
     .sys_hps_emac1_phy_mac_speed_o (mac_speed_1),
-    .sys_hps_emac1_phy_txd_o ({mii_txd_extra_b,mii_txd_b}),
+    .sys_hps_emac1_phy_txd_o (mii_txd_b),
     .sys_hps_emac1_phy_txen_o (mii_tx_en_b),
     .sys_hps_emac1_phy_txer_o (),
     .sys_hps_emac1_phy_rxdv_i (mii_rx_dv_b),
     .sys_hps_emac1_phy_rxer_i (mii_rx_er_b),
-    .sys_hps_emac1_phy_rxd_i ({4'h0,mii_rxd_b}),
+    .sys_hps_emac1_phy_rxd_i (mii_rxd_b),
     .sys_hps_emac1_phy_col_i (led_0_b),
     .sys_hps_emac1_phy_crs_i (mii_crs_b),
     .sys_hps_emac1_gmii_mdo_o (hps_emac_mdo_o_b),
