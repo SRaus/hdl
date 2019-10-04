@@ -253,6 +253,21 @@ proc adi_project_run {project_name} {
   open_run impl_1
   report_timing_summary -file timing_impl.log
 
+  if {[info exists ::env(ADI_GENERATE_UTILIZATION)]} {
+    if {[catch {xilinx::designutils::report_failfast -csv -file resource_utilization.csv -transpose -no_header -ignore_pr -quiet} issue] != 0 } {
+      puts "GENERATE_REPORTS: tclapp::xilinx::designutils not installed"
+    }
+    set fileId [open "MMCM_and_PLL_usage_and_worst_slacks.csv" w]
+    puts $fileId "MMCM*,PLL*,Worst_Setup_Slack,Worst_Hold_Slack\n"
+    puts -nonewline $fileId "[llength [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ *MMCM* }]],"
+    puts -nonewline $fileId "[llength [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ *PLL* }]]"
+    puts -nonewline $fileId "[get_property SLACK [get_timing_paths -setup]],"
+    puts -nonewline $fileId "[get_property SLACK [get_timing_paths -hold]]"
+    close $fileId
+  } else {
+    puts "GENERATE_REPORTS: Resource utilization files won't be generated because ADI_GENERATE_UTILIZATION env var is not set"
+  }
+  
   # Look for undefined clocks which do not show up in the timing summary
   set timing_check [check_timing -override_defaults no_clock -no_header -return_string]
   if {[regexp { (\d+) register} $timing_check -> num_regs]} {
