@@ -253,6 +253,8 @@ proc adi_project_run {project_name} {
   open_run impl_1
   report_timing_summary -file timing_impl.log
 
+  # Adding a change in script
+
   # Look for undefined clocks which do not show up in the timing summary
   set timing_check [check_timing -override_defaults no_clock -no_header -return_string]
   if {[regexp { (\d+) register} $timing_check -> num_regs]} {
