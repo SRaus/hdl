@@ -389,6 +389,8 @@ proc adi_project_run {project_name} {
     puts "GENERATE_REPORTS: Power analysis files won't be generated because ADI_GENERATE_XPA env var is not set"
   }
 
+  # Adding a change in script 2
+
   # Look for undefined clocks which do not show up in the timing summary
   set timing_check [check_timing -override_defaults no_clock -no_header -return_string]
   if {[regexp { (\d+) register} $timing_check -> num_regs]} {
