@@ -65,7 +65,7 @@ module axi_dmac #(
   parameter ALLOW_ASYM_MEM = 0
 ) (
   // Slave AXI interface
-  input s_axi_aclk,
+  (* keep = "TRUE" *)input s_axi_aclk,
   input s_axi_aresetn,
 
   input         s_axi_awvalid,
