@@ -35,7 +35,7 @@
 
 `timescale 1ns/100ps
 
-module axi_dmac #(
+(* keep_hierarchy = "yes" *) module axi_dmac #(
 
   parameter ID = 0,
   parameter DMA_DATA_WIDTH_SRC = 64,
